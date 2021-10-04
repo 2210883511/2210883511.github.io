@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Javascript</title>
+    <url>/2021/10/03/Javascript/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/09/28/hello-world/</url>
     <content><![CDATA[<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><span id="more"></span>
@@ -17,6 +22,28 @@
     <content><![CDATA[]]></content>
       <tags>
         <tag>哈哈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown基本语法</title>
+    <url>/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>Markdown 基本语法</p>
+<span id="more"></span>
+
+<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><h3 id="语法说明如下："><a href="#语法说明如下：" class="headerlink" title="语法说明如下："></a>语法说明如下：</h3><ul>
+<li>在行首插入 # 可标记出标题</li>
+<li>#的个数表示了标题的等级</li>
+<li>建议在# 后面加一个空格</li>
+<li>Markdown中最多支持前六级标题</li>
+</ul>
+<p>效果如下：</p>
+<p><img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/2.png" alt="image-20211004191723293"></p>
+]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
       </tags>
   </entry>
 </search>

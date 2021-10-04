@@ -3,7 +3,7 @@
   <entry>
     <title>Markdown基本语法</title>
     <url>/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>Markdown 基本语法</p>
+    <content><![CDATA[<p><strong>Markdown 基本语法</strong></p>
 <span id="more"></span>
 
 <h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><ul>
@@ -65,6 +65,44 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript基本语法--变量</title>
+    <url>/2021/10/04/Javascript%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<p><strong>Javascript基础语法–变量</strong></p>
+<span id="more"></span>
+
+<p><strong>定义变量：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> app;		<span class="comment">//定义变量</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="string">&quot;hello world!&quot;</span>; 		<span class="comment">// 定义变量并初始化赋值</span></span><br><span class="line"><span class="keyword">var</span> name,sex,age,num;  	<span class="comment">//定义多个变量(初始化可选)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>注释：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"><span class="comment">/* 多行注释 */</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>var声明作用域：</strong></p>
+<ul>
+<li>使用<code>var</code>定义的变量会成为包含它的函数的局部变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> app = <span class="string">&quot;hello world!&quot;</span>; <span class="comment">//局部变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(app); <span class="comment">//Error</span></span><br><span class="line"></span><br><span class="line">-------------------------------</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    app = <span class="string">&quot;hello world!&quot;</span>  <span class="comment">//省略var可以创建全局变量，但不推荐,严格模式下错误。</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(app);</span><br></pre></td></tr></table></figure>
+
+<p><strong>var声明提升：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">    <span class="keyword">var</span> age = <span class="number">26</span>;</span><br><span class="line">&#125;</span><br><span class="line">test(); </span><br></pre></td></tr></table></figure>
+
+<p><code>等价如下：</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> age;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">    age = <span class="number">26</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();   </span><br><span class="line"><span class="comment">// 这就是所谓的提升（hoist），也就是把所有变量的声明都拉到函数作用域的顶部</span></span><br><span class="line"><span class="comment">// 反复多次使用var声明同一个变量也没有问题</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
       </tags>
   </entry>
 </search>

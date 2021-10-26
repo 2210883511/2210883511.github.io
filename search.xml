@@ -58,6 +58,8 @@
 
 
 
+
+
 ]]></content>
       <categories>
         <category>Javascript</category>
@@ -131,6 +133,96 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7.6安装青龙面板</title>
+    <url>/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h3 id="安装所需："><a href="#安装所需：" class="headerlink" title="安装所需："></a>安装所需：</h3><ul>
+<li>centos7.6</li>
+<li>宝塔远程工具</li>
+</ul>
+<h3 id="centos7-6安装宝塔面板"><a href="#centos7-6安装宝塔面板" class="headerlink" title="centos7.6安装宝塔面板"></a>centos7.6安装宝塔面板</h3><p><strong>宝塔安装命令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85.png"></p>
+<p><strong>服务器放行端口</strong></p>
+<ul>
+<li>8888</li>
+<li>5700</li>
+</ul>
+<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3.png"></p>
+<p><strong>登录宝塔 linux</strong> </p>
+<ul>
+<li>安装docker</li>
+</ul>
+<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E5%AE%89%E8%A3%85docker.png"></p>
+<p><strong>安装青龙面板</strong></p>
+<ul>
+<li>使用宝塔ssh远程连接</li>
+<li>使用以下命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -dit \</span><br><span class="line">   -v $PWD/QL/config:/ql/config \</span><br><span class="line">   -v $PWD/QL/log:/ql/log \</span><br><span class="line">   -v $PWD/QL/db:/ql/db \</span><br><span class="line">   -v $PWD/QL/scripts:/ql/scripts \</span><br><span class="line">   --net host \</span><br><span class="line">   --name qinglong \</span><br><span class="line">   --hostname qinglong \</span><br><span class="line">   --restart always \</span><br><span class="line">   whyour/qinglong:latest</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99.png"></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>青龙面板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript基础语法--数据类型</title>
+    <url>/2021/10/06/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>Javascript基本语法–变量</p>
+<span id="more"></span>
+
+<p><strong>思维导图:</strong></p>
+<p><img src="/2021/10/06/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%BC%E5%9B%BE.jpg"></p>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">转换为true的值</th>
+<th align="center">转换为false的值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Boolean</td>
+<td align="center">true</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">String</td>
+<td align="center">非空字符串</td>
+<td align="center">“” 空字符串</td>
+</tr>
+<tr>
+<td align="center">Number</td>
+<td align="center">非零数值(包括无穷)</td>
+<td align="center">0、NaN</td>
+</tr>
+<tr>
+<td align="center">Object</td>
+<td align="center">任意对象</td>
+<td align="center">null</td>
+</tr>
+<tr>
+<td align="center">Undefined</td>
+<td align="center">N / A(不存在)</td>
+<td align="center">undefined</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>数据类型</tag>
       </tags>
   </entry>
 </search>

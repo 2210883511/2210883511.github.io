@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-26 22:52:13" itemprop="dateModified" datetime="2021-10-26T22:52:13+08:00">2021-10-26</time>
+                <time title="修改时间：2021-10-26 22:57:43" itemprop="dateModified" datetime="2021-10-26T22:57:43+08:00">2021-10-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,36 +268,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h3 id="安装所需："><a href="#安装所需：" class="headerlink" title="安装所需："></a>安装所需：</h3><ul>
-<li>centos7.6</li>
-<li>宝塔远程工具</li>
-</ul>
-<h3 id="centos7-6安装宝塔面板"><a href="#centos7-6安装宝塔面板" class="headerlink" title="centos7.6安装宝塔面板"></a>centos7.6安装宝塔面板</h3><p><strong>宝塔安装命令</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85.png"></p>
-<p><strong>服务器放行端口</strong></p>
-<ul>
-<li>8888</li>
-<li>5700</li>
-</ul>
-<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3.png"></p>
-<p><strong>登录宝塔 linux</strong> </p>
-<ul>
-<li>安装docker</li>
-</ul>
-<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E5%AE%89%E8%A3%85docker.png"></p>
-<p><strong>安装青龙面板</strong></p>
-<ul>
-<li>使用宝塔ssh远程连接</li>
-<li>使用以下命令</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit \</span><br><span class="line">   -v $PWD/QL/config:/ql/config \</span><br><span class="line">   -v $PWD/QL/log:/ql/log \</span><br><span class="line">   -v $PWD/QL/db:/ql/db \</span><br><span class="line">   -v $PWD/QL/scripts:/ql/scripts \</span><br><span class="line">   --net host \</span><br><span class="line">   --name qinglong \</span><br><span class="line">   --hostname qinglong \</span><br><span class="line">   --restart always \</span><br><span class="line">   whyour/qinglong:latest</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99.png"></p>
-
+          <p>centos7.6安装青龙面板</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/07/centos7-6%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

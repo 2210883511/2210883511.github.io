@@ -226,4 +226,49 @@
         <tag>青龙面板</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MySql基础知识</title>
+    <url>/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p><strong>MySql基础知识</strong></p>
+<span id="more"></span>
+
+<ol>
+<li><p>MySql常见命令</p>
+<ul>
+<li><p>查看当前所有的数据库</p>
+<p><code>show databases;</code></p>
+</li>
+<li><p>打开指定的库</p>
+<p><code>use + 库名</code></p>
+</li>
+<li><p>查看当前库的所有表</p>
+<p><code>show tables;</code></p>
+</li>
+<li><p>查看其它库的所有表</p>
+<p><code>show tables from + 库名;</code></p>
+</li>
+<li><p>创建表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    .......</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>查看表结构</p>
+<p><code>desc + 表名;</code></p>
+</li>
+<li><p>查看服务器的版本</p>
+<p><code>select version();</code> 登录到mysql服务端</p>
+<p><code>mysql -v;</code>没有登录的mysql服务端</p>
+</li>
+</ul>
+<p>1.1 <strong>测试示例</strong></p>
+<ul>
+<li><code>showdatabases</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
 </search>

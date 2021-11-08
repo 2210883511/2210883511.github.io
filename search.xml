@@ -119,110 +119,26 @@
       </tags>
   </entry>
   <entry>
-    <title>MySql基础知识</title>
-    <url>/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p><strong>MySql基础知识</strong></p>
+    <title>Jdbc</title>
+    <url>/2021/11/08/Jdbc/</url>
+    <content><![CDATA[<p><strong>Jdbc基础知识</strong></p>
 <span id="more"></span>
 
-<ol>
-<li><p>MySql常见命令</p>
+<p>1.<strong>Jdbc的连接</strong></p>
 <ul>
-<li><p>查看当前所有的数据库</p>
-<p><code>show databases;</code></p>
-</li>
-<li><p>打开指定的库</p>
-<p><code>use + 库名</code></p>
-</li>
-<li><p>查看当前库的所有表</p>
-<p><code>show tables;</code></p>
-</li>
-<li><p>查看其它库的所有表</p>
-<p><code>show tables from + 库名;</code></p>
-</li>
-<li><p>创建表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    .......</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-<li><p>查看表结构</p>
-<p><code>desc + 表名;</code></p>
-</li>
-<li><p>插入语句</p>
-<p><code>insert into + 表名 + (字段名1，字段名2，...) values(val_1,val_2,...);</code></p>
-</li>
-<li><p>查询语句</p>
-<p><code>select * from + 表名 (查询全部)</code></p>
-</li>
-<li><p>更新语句</p>
-<p><code>update + 表名 + set +字段名 = val where 字段名 = val</code></p>
-</li>
-<li><p>删除语句</p>
-<p><code>delete from + 表名+where + 字段名 = val</code></p>
-</li>
-<li><p>查看服务器的版本</p>
-<p><code>select version();</code> 登录到mysql服务端</p>
-<p><code>mysql -v;</code>没有登录的mysql服务端</p>
-</li>
+<li><p>方式一</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testConnettion</span><span class="params">()</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException </span>&#123;</span><br><span class="line">  </span><br><span class="line">     <span class="comment">// 1.提供三个连接的基本信息 url、user、password</span></span><br><span class="line">  </span><br><span class="line">     String url = <span class="string">&quot;jdbc:mysql://localhost:3306/test&quot;</span>;</span><br><span class="line">     String user = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">     String pass = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">  </span><br><span class="line">     <span class="comment">// 2. 加载Driver</span></span><br><span class="line">     </span><br><span class="line">     Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">  </span><br><span class="line">     <span class="comment">//3. 获取连接</span></span><br><span class="line">  </span><br><span class="line">     Connection con = DriverManager.getConnection(url,user,pass);</span><br><span class="line">  </span><br><span class="line">     System.out.println(con);</span><br><span class="line">  </span><br><span class="line"> &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
+<li><p>运行效果</p>
+<img src="/2021/11/08/Jdbc/Jdbc_con_1.png" style="zoom:60%;"></li>
+<li><p>方式二</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Connection</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 将数据库连接需要的4个基本信息声明在配置文件中，通过读取配置文件的方式，获取连接</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            好处：</span></span><br><span class="line"><span class="comment">            1.实现了数据与代码的分离。实现了解耦。</span></span><br><span class="line"><span class="comment">            2.如果需要修改配置文件信息，可以避免重新打包。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 读取配置文件中的4个基本信息</span></span><br><span class="line">        InputStream  is =    ConnectionTest.class.getClassLoader().getResourceAsStream(<span class="string">&quot;Jdbc.properties&quot;</span>);</span><br><span class="line">        Properties pros  =  <span class="keyword">new</span> Properties();</span><br><span class="line">        pros.load(is);</span><br><span class="line">        String user = pros.getProperty(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        String pass = pros.getProperty(<span class="string">&quot;pass&quot;</span>);</span><br><span class="line">        String url = pros.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">        String driver = pros.getProperty(<span class="string">&quot;driver&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.加载驱动</span></span><br><span class="line"></span><br><span class="line">        Class.forName(driver);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.获取连接</span></span><br><span class="line"></span><br><span class="line">        Connection con = DriverManager.getConnection(url,user,pass);</span><br><span class="line">        System.out.println(con);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">properties 中的内容</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            user=root</span></span><br><span class="line"><span class="comment">            pass=123456</span></span><br><span class="line"><span class="comment">            url=jdbc:mysql://localhost:3306/test</span></span><br><span class="line"><span class="comment">            driver=com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>1.1 <strong>测试示例</strong></p>
-<ul>
-<li><code>showdatabases</code><ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/show_databases.png" style="zoom:80%;"></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><code>user+库名</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/use_database.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>show tables</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/show_tables.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>show tables from + 库名</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/show_tables_from.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>create tables</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/create.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>desc+表名</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/desc.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>select * from +表名</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/select.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>insert into + 表名 + (字段1，字段2，...) values(val_1,val_2,...)</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/insert.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>update + 表名 + set +字段名 = val where 字段名 = val </code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/update.png" style="zoom:80%;"></li>
-</ul>
-</li>
-<li><p><code>delete from + 表名+where + 字段名 = val</code></p>
-<ul>
-<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/delete.png" style="zoom:80%;"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
+<p>2.<strong>流程图</strong></p>
+<p>​    <img src="/2021/11/08/Jdbc/Jdbc流程图.png" style="zoom: 67%;"></p>
+<p>3.</p>
 ]]></content>
-      <categories>
-        <category>Mysql</category>
-      </categories>
       <tags>
-        <tag>MySql</tag>
+        <tag>Jdbc</tag>
       </tags>
   </entry>
   <entry>
@@ -331,6 +247,114 @@
       </categories>
       <tags>
         <tag>青龙面板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySql基础知识</title>
+    <url>/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p><strong>MySql基础知识</strong></p>
+<span id="more"></span>
+
+<ol>
+<li><p>MySql常见命令</p>
+<ul>
+<li><p>查看当前所有的数据库</p>
+<p><code>show databases;</code></p>
+</li>
+<li><p>打开指定的库</p>
+<p><code>use + 库名</code></p>
+</li>
+<li><p>查看当前库的所有表</p>
+<p><code>show tables;</code></p>
+</li>
+<li><p>查看其它库的所有表</p>
+<p><code>show tables from + 库名;</code></p>
+</li>
+<li><p>创建表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    .......</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>查看表结构</p>
+<p><code>desc + 表名;</code></p>
+</li>
+<li><p>插入语句</p>
+<p><code>insert into + 表名 + (字段名1，字段名2，...) values(val_1,val_2,...);</code></p>
+</li>
+<li><p>查询语句</p>
+<p><code>select * from + 表名 (查询全部)</code></p>
+</li>
+<li><p>更新语句</p>
+<p><code>update + 表名 + set +字段名 = val where 字段名 = val</code></p>
+</li>
+<li><p>删除语句</p>
+<p><code>delete from + 表名+where + 字段名 = val</code></p>
+</li>
+<li><p>查看服务器的版本</p>
+<p><code>select version();</code> 登录到mysql服务端</p>
+<p><code>mysql -v;</code>没有登录的mysql服务端</p>
+</li>
+</ul>
+<p>1.1 <strong>测试示例</strong></p>
+<ul>
+<li><code>showdatabases</code><ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/show_databases.png" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>user+库名</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/use_database.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>show tables</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/show_tables.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>show tables from + 库名</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/show_tables_from.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>create tables</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/create.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>desc+表名</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/desc.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>select * from +表名</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/select.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>insert into + 表名 + (字段1，字段2，...) values(val_1,val_2,...)</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/insert.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>update + 表名 + set +字段名 = val where 字段名 = val </code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/update.png" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p><code>delete from + 表名+where + 字段名 = val</code></p>
+<ul>
+<li><img src="/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/delete.png" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
       </tags>
   </entry>
   <entry>

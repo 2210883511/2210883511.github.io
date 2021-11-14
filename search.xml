@@ -1,6 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JavaWeb</title>
+    <url>/2021/11/14/JavaWeb/</url>
+    <content><![CDATA[<p><strong>JavaWeb基础知识</strong></p>
+<span id="more"></span>
+
+<h2 id="表单提交的细节"><a href="#表单提交的细节" class="headerlink" title="表单提交的细节"></a>表单提交的细节</h2><ul>
+<li><p><strong>form标签是表单标签</strong></p>
+<ul>
+<li>action属性设置提交的服务器地址</li>
+<li>method属性设置提交的方式GET(默认值)或POST</li>
+</ul>
+</li>
+<li><p><strong>表单提交的时候,数据没有发送给服务器的三种情况:</strong></p>
+<ul>
+<li>表单项没有name属性值</li>
+<li>单选、复选（下拉列表中的option标签）都需要添加value属性，以便发送给服务器</li>
+<li>表单项不在提交的form标签中</li>
+</ul>
+</li>
+<li><p>GET请求的特点是：</p>
+<ul>
+<li>浏览器地址栏中的地址是：URL?name=value&amp;name=value</li>
+<li>不安全</li>
+<li>它有长度限制</li>
+</ul>
+</li>
+<li><p>POST请求的特点是：</p>
+<ul>
+<li>浏览器地址栏中只有action属性值</li>
+<li>相对于GET请求安全</li>
+<li>理论上没有长度限制</li>
+</ul>
+</li>
+<li><p>```html</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="font-family: 宋体;font-size: 18px">
+    <form action="http://localhost:8080" method="post">
+     
+<pre><code>   &lt;table align=&quot;center&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;用户名称：&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;默认显示&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;用户密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;确认密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;surePassword&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;性别：&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;boy&quot;&gt;男&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;girl&quot;&gt;  女&lt;/td&gt;
+         &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;课程：&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;checkbox&quot; name=&quot;course&quot; value=&quot;JavaScript&quot;&gt;JavaScript&lt;input type=&quot;checkbox&quot; name=&quot;course&quot; value=&quot;Java&quot;&gt;Java&lt;input type=&quot;checkbox&quot; name=&quot;course&quot; value=&quot;C++&quot;&gt;C++&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;书籍&lt;/td&gt;
+            &lt;td&gt;
+                &lt;select name=&quot;book&quot;&gt;
+                    &lt;option value=&quot;请选择书籍&quot;&gt;--请选择书籍--&lt;/option&gt;
+                    &lt;option value=&quot;Java&quot;&gt;Java&lt;/option&gt;
+                    &lt;option value=&quot;JavaWeb&quot;&gt;JavaWeb&lt;/option&gt;
+                    &lt;option value=&quot;C++&quot;&gt;C++&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;选择文件：&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;自我介绍:&lt;/td&gt;
+            &lt;td&gt;&lt;textarea rows=&quot;10&quot; cols=&quot;10&quot;name=&quot;desc&quot;&gt;&lt;/textarea&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;hidden&quot;&gt;
+                &lt;input type=&quot;submit&quot;&gt;
+                &lt;input type=&quot;reset&quot;&gt;
+            &lt;/td&gt;
+
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+&lt;/form&gt;
+</code></pre>
+</form></body>
+</html>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">-</span> </span><br><span class="line"></span><br><span class="line"><span class="section">## CSS与Html的结合方式</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 方式一： <span class="code">`style=&quot; key_1:value_1;key_2:value_2;key_3:value_3 &quot;`</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">  -</span> 缺点：如果标签多，样式多，代码量比较庞大。</span><br><span class="line"><span class="bullet">  -</span> 可读性非常差</span><br><span class="line"><span class="bullet">  -</span> Css代码没什么复用性可言</span><br><span class="line"></span><br><span class="line">  <span class="code">```html</span></span><br><span class="line"><span class="code">  &lt;body style=&quot;font-family: 宋体;font-size: 18px&quot;&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>方式二：<code>head</code>标签中添加<code>style</code>样式</p>
+<ul>
+<li>缺点：只能在同一个页面内复用代码，不能在多个页面复用css代码</li>
+<li>缺点：维护起来不太方便，实际的项目中会有成千上万的页面，要到每个页面中去修改。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">            <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">            <span class="attribute">font-family</span>: 宋体,serif;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">            <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">            <span class="attribute">font-family</span>: Arial sans-serif;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>方式三：把css样式写成一个单独的css文件，再通过<code>link</code>标签引入即可复用</p>
+<ul>
+<li>```html <link rel="stylesheet" type="text/css" href="./test.css">
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 选择器</span><br><span class="line"></span><br><span class="line">- 标签名选择器</span><br><span class="line"></span><br><span class="line">  - ```css</span><br><span class="line">    <span class="selector-tag">div</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">        <span class="attribute">font-family</span>: 宋体 serif;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>id选择器</p>
+<ul>
+<li>```css<br>#test{<pre><code>font-size: 16px;
+font-family: 宋体 serif;
+</code></pre>
+}<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- class选择器（类选择器）</span><br><span class="line"></span><br><span class="line">  - ```css</span><br><span class="line">    <span class="selector-class">.test</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">        <span class="attribute">font-family</span>: 宋体 serif;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>组合选择器</p>
+<ul>
+<li>```css<br>div,#test,.stu{<pre><code>font-size: 18px;
+font-family: 宋体 serif;
+</code></pre>
+}<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## JavaScript与html结合的方式</span><br><span class="line"></span><br><span class="line">- 方式一：放入html的`head`标签中</span><br><span class="line"></span><br><span class="line">  - ```html</span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">            alert(<span class="string">&quot;hello&quot;</span>)</span></span><br><span class="line"><span class="javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>方式二：通过<code>script</code>标签引入外部的js文件</p>
+<ul>
+<li>```html <script src="../js/hello.js"></script>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## js中的函数定义</span><br><span class="line"></span><br><span class="line">- 方式一</span><br><span class="line"></span><br><span class="line">  - ```js</span><br><span class="line">    function  <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        alert(<span class="string">&quot;空参数&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">fun</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>方式二</p>
+<ul>
+<li>```js<br>var s = function (a,b) {<pre><code>alert(&quot;第二种方式&quot;)
+</code></pre>
+}<br>// 方法重载会覆盖上一次的方法<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- 隐形参数arguments</span><br><span class="line"></span><br><span class="line">  - 不需要在函数中写形参，用的时候直接传值即可，使用隐性参数可以得到参数的值和参数的个数</span><br><span class="line"></span><br><span class="line">  - ```js</span><br><span class="line">    function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arguments.length;i++)&#123;</span><br><span class="line">            alert(arguments[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">fun</span><span class="params">(<span class="number">1</span>,<span class="string">&#x27;hello&#x27;</span>,<span class="literal">true</span>,[<span class="number">1</span>,<span class="string">&#x27;hello&#x27;</span>,<span class="literal">false</span>])</span></span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="js中的自定义对象"><a href="#js中的自定义对象" class="headerlink" title="js中的自定义对象"></a>js中的自定义对象</h2><ul>
+<li><p>Object形式的自定义对象</p>
+<ul>
+<li><pre><code class="js">var user = new Object();
+user.name = &#39;lizhengming&#39;;
+user.age = 20;
+user.sex =&#39;male&#39;;
+user.sum = function ()&#123;
+    alert(&quot;方法！&quot;)
+    alert(&quot;方法！&quot;)
+    // 对象的访问
+    alert(this.name);
+    alert(this.age);
+    alert(this.sex);
+&#125;
+function fun()&#123;
+    alert(user.sum())
+&#125;
+</code></pre>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>JavaWeb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript基本语法--变量</title>
     <url>/2021/10/04/Javascript%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<p><strong>Javascript基础语法–变量</strong></p>
@@ -119,6 +290,80 @@
       </tags>
   </entry>
   <entry>
+    <title>Markdown基本语法</title>
+    <url>/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p><strong>Markdown 基本语法</strong></p>
+<span id="more"></span>
+
+<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><ul>
+<li>在行首插入 # 可标记出标题</li>
+<li>#的个数表示了标题的等级</li>
+<li>建议在# 后面加一个空格</li>
+<li>Markdown中最多支持前六级标题</li>
+</ul>
+<p><strong>效果如下</strong></p>
+<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/2.png" alt="image-20211004191723293" style="zoom: 67%;">
+
+<h2 id="2-粗体和斜体"><a href="#2-粗体和斜体" class="headerlink" title="2.粗体和斜体"></a>2.粗体和斜体</h2><ul>
+<li>粗体由两个*或者两个_包裹</li>
+<li>斜体由一个*或者一个_包裹</li>
+<li>建议粗体用两个*包裹</li>
+<li>建议斜体用一个*包裹</li>
+</ul>
+<p><strong>效果如下：</strong></p>
+<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/3.png" style="zoom:67%;">
+
+
+
+<h2 id="3-段落与换行"><a href="#3-段落与换行" class="headerlink" title="3.段落与换行"></a>3.段落与换行</h2><ul>
+<li>如果行与行之间没有空行，则会被视为同一段落</li>
+<li>如果行与行之间有空行，则会视为不同段落</li>
+<li>空行是指行内什么都没有，或者只有空格和制表符</li>
+<li>如果想在段内换行，则需要在上一行的结尾插入两个以上的空格然后按回车键</li>
+</ul>
+<h2 id="4-列表"><a href="#4-列表" class="headerlink" title="4.列表"></a>4.列表</h2><ul>
+<li>数字序号 + 英文句号 + 空格  + 列表内容 表示有序列表</li>
+<li>星号 + 空格  +  列表内容 表示无序列表</li>
+<li>使用+ - * / 来标记无序列表的效果是相同的</li>
+<li>列表中可以嵌套列表</li>
+<li>有序列表和无序列表页可以互相嵌套</li>
+<li>建议使用 <strong>-</strong> 标记无序列表</li>
+<li>无序列表有换行则建议使用3个空格</li>
+<li>有序列表有换行则建议使用2个空格</li>
+</ul>
+<p><strong>效果如下：</strong></p>
+<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/4.png" style="zoom:67%;">
+
+<h2 id="5-分割线"><a href="#5-分割线" class="headerlink" title="5.分割线"></a>5.分割线</h2><ul>
+<li>分割线使用至少三个以上的* / - / _ 来标记</li>
+<li>行内不能有其他的字符</li>
+<li>可以在标记符中间加上空格</li>
+</ul>
+<p><strong>效果如下：</strong></p>
+<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/5.png" style="zoom:67%;">
+
+<h2 id="6-网址链接"><a href="#6-网址链接" class="headerlink" title="6.网址链接"></a>6.网址链接</h2><ul>
+<li>建议使用&lt;&gt;包裹自动链接</li>
+<li>自动链接要以http / https开头</li>
+</ul>
+<p><strong>效果如下：</strong></p>
+<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/6.png" style="zoom:67%;">
+
+<h2 id="7-行内代码与代码块"><a href="#7-行内代码与代码块" class="headerlink" title="7.行内代码与代码块"></a>7.行内代码与代码块</h2><ul>
+<li>行内代码使用`包裹 </li>
+<li><code>测试</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">``` python</span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySql基础知识</title>
     <url>/2021/10/26/MySql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p><strong>MySql基础知识</strong></p>
@@ -224,80 +469,6 @@
       </categories>
       <tags>
         <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown基本语法</title>
-    <url>/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p><strong>Markdown 基本语法</strong></p>
-<span id="more"></span>
-
-<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><ul>
-<li>在行首插入 # 可标记出标题</li>
-<li>#的个数表示了标题的等级</li>
-<li>建议在# 后面加一个空格</li>
-<li>Markdown中最多支持前六级标题</li>
-</ul>
-<p><strong>效果如下</strong></p>
-<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/2.png" alt="image-20211004191723293" style="zoom: 67%;">
-
-<h2 id="2-粗体和斜体"><a href="#2-粗体和斜体" class="headerlink" title="2.粗体和斜体"></a>2.粗体和斜体</h2><ul>
-<li>粗体由两个*或者两个_包裹</li>
-<li>斜体由一个*或者一个_包裹</li>
-<li>建议粗体用两个*包裹</li>
-<li>建议斜体用一个*包裹</li>
-</ul>
-<p><strong>效果如下：</strong></p>
-<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/3.png" style="zoom:67%;">
-
-
-
-<h2 id="3-段落与换行"><a href="#3-段落与换行" class="headerlink" title="3.段落与换行"></a>3.段落与换行</h2><ul>
-<li>如果行与行之间没有空行，则会被视为同一段落</li>
-<li>如果行与行之间有空行，则会视为不同段落</li>
-<li>空行是指行内什么都没有，或者只有空格和制表符</li>
-<li>如果想在段内换行，则需要在上一行的结尾插入两个以上的空格然后按回车键</li>
-</ul>
-<h2 id="4-列表"><a href="#4-列表" class="headerlink" title="4.列表"></a>4.列表</h2><ul>
-<li>数字序号 + 英文句号 + 空格  + 列表内容 表示有序列表</li>
-<li>星号 + 空格  +  列表内容 表示无序列表</li>
-<li>使用+ - * / 来标记无序列表的效果是相同的</li>
-<li>列表中可以嵌套列表</li>
-<li>有序列表和无序列表页可以互相嵌套</li>
-<li>建议使用 <strong>-</strong> 标记无序列表</li>
-<li>无序列表有换行则建议使用3个空格</li>
-<li>有序列表有换行则建议使用2个空格</li>
-</ul>
-<p><strong>效果如下：</strong></p>
-<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/4.png" style="zoom:67%;">
-
-<h2 id="5-分割线"><a href="#5-分割线" class="headerlink" title="5.分割线"></a>5.分割线</h2><ul>
-<li>分割线使用至少三个以上的* / - / _ 来标记</li>
-<li>行内不能有其他的字符</li>
-<li>可以在标记符中间加上空格</li>
-</ul>
-<p><strong>效果如下：</strong></p>
-<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/5.png" style="zoom:67%;">
-
-<h2 id="6-网址链接"><a href="#6-网址链接" class="headerlink" title="6.网址链接"></a>6.网址链接</h2><ul>
-<li>建议使用&lt;&gt;包裹自动链接</li>
-<li>自动链接要以http / https开头</li>
-</ul>
-<p><strong>效果如下：</strong></p>
-<img src="/2021/10/04/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/6.png" style="zoom:67%;">
-
-<h2 id="7-行内代码与代码块"><a href="#7-行内代码与代码块" class="headerlink" title="7.行内代码与代码块"></a>7.行内代码与代码块</h2><ul>
-<li>行内代码使用`包裹 </li>
-<li><code>测试</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">``` python</span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Markdown</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -794,42 +965,6 @@
 ]]></content>
       <tags>
         <tag>Jdbc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaWeb</title>
-    <url>/2021/11/14/JavaWeb/</url>
-    <content><![CDATA[<p><strong>JavaWeb基础知识</strong></p>
-<span id="more"></span>
-
-<h2 id="表单提交的细节"><a href="#表单提交的细节" class="headerlink" title="表单提交的细节"></a>表单提交的细节</h2><ul>
-<li><strong>form标签是表单标签</strong><ul>
-<li>action属性设置提交的服务器地址</li>
-<li>method属性设置提交的方式GET(默认值)或POST</li>
-</ul>
-</li>
-<li><strong>表单提交的时候,数据没有发送给服务器的三种情况:</strong><ul>
-<li>表单项没有name属性值</li>
-<li>单选、复选（下拉列表中的option标签）都需要添加value属性，以便发送给服务器</li>
-<li>表单项不在提交的form标签中</li>
-</ul>
-</li>
-<li>GET请求的特点是：<ul>
-<li>浏览器地址栏中的地址是：URL?name=value&amp;name=value</li>
-<li>不安全</li>
-<li>它有长度限制</li>
-</ul>
-</li>
-<li>POST请求的特点是：<ul>
-<li>浏览器地址栏中只有action属性值</li>
-<li>相对于GET请求安全</li>
-<li>理论上没有长度限制</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>JavaWeb</tag>
       </tags>
   </entry>
 </search>
